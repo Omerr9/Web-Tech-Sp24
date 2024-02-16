@@ -1,20 +1,34 @@
 #pp {
-  width: 15em;
+  width: 12em;
+  float: right;
 }
 
-.main-table {
-  margin-left: 25%;
-  border-collapse: separate;
-  border-radius: 10px;
+#head-div {
+  overflow: hidden;
+  background-color: #1B2A37;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+
 }
 
-
-
-.main-table:hover {
-  transform: scale(1.01);
-  background-color: #b8dbd9;
+#right-div {
+  display: inline;
+  float: left;
+  width: 50%;
+  padding-left: 5em;
+  padding-top: 2em;
 }
 
-#main-div {
-  background-color: #f4f4f9;
+#left-div {
+  display: inline;
+  float: left;
+  width: 40%;
+  text-align: center;
+}
+
+.head-txt {
+  font-family: "Fredoka", sans-serif;
+  color: white;
 }
