@@ -36,7 +36,7 @@
 #main-left {
   float: left;
   width: 29.89%;
-  background-color: #D6E1EB;
+  background-color: #ADC4D7;
   overflow: hidden;
   height: 60em;
   border: 1px solid #000;
@@ -71,7 +71,7 @@ li {
 .main-right {
   display: inline;
   float: left;
-  width: 69.89%;
+  width: 70%;
   background-color: #DCC5C3;
   height: 60em;
   border: 1px solid #000;
@@ -89,4 +89,9 @@ td, th {
   padding: 1em;
   border-radius: 2px;
   border: 1px solid black;
+}
+
+table:hover {
+  transform: scale(1.01);
+  background-color: #ddb4af;
 }
