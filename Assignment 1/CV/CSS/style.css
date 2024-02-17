@@ -32,3 +32,61 @@
   font-family: "Fredoka", sans-serif;
   color: white;
 }
+
+#main-left {
+  float: left;
+  width: 29.89%;
+  background-color: #D6E1EB;
+  overflow: hidden;
+  height: 60em;
+  border: 1px solid #000;
+  border-right: none;
+}
+
+.centre-txt {
+  font-family: "Fredoka", sans-serif;
+  text-align: center;
+  margin: 1em;
+}
+p.centre-txt {
+  font-size: 0.9em;
+}
+
+.para-txt {
+  font-family: "Fredoka", sans-serif;
+  font-size: 1em;
+  margin: 1em;
+}
+
+ul.para-txt {
+  list-style-type: square;
+  margin: 1em;
+}
+
+li {
+  border-radius: 20px;
+  margin: 0.5em;
+}
+
+.main-right {
+  display: inline;
+  float: left;
+  width: 69.89%;
+  background-color: #DCC5C3;
+  height: 60em;
+  border: 1px solid #000;
+  border-left: none;
+}
+
+table.centre-txt {
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td, th {
+  padding: 1em;
+  border-radius: 2px;
+  border: 1px solid black;
+}
