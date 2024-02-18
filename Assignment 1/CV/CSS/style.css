@@ -41,6 +41,7 @@
   height: 60em;
   border: 1px solid #000;
   border-right: none;
+  overflow: visible;
 }
 
 .centre-txt {
@@ -76,6 +77,7 @@ li {
   height: 60em;
   border: 1px solid #000;
   border-left: none;
+  overflow: visible;
 }
 
 table.centre-txt {
