@@ -181,6 +181,9 @@ h4.work-experience {
 
 .we-item:hover {
   transform: scale(1.01);
+  h5 {
+    text-decoration: underline;
+  }
 }
 
 .we-item p {
