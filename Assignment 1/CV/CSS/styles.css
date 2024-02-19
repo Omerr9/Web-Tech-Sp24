@@ -164,11 +164,23 @@ ul.Interest {
   margin: 2rem;
 }
 
+.work-experience-container, .projects-container {
+  box-shadow: 1px 2px 4px black;
+}
+
+.work-experience-container, .projects-container {
+  padding-bottom: 1rem;
+}
+
 /* Work Experience Part */
 
 h4.work-experience {
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.we-item:hover {
+  transform: scale(1.01);
 }
 
 .we-item p {
