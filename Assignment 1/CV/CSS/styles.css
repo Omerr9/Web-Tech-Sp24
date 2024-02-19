@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
+
+body {
+  font-family: "Fredoka", sans-serif;
+  color: #14213d;
+}
+
+h4 {
+  color: #fca311;
+  font-size: x-large;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Main Container */
+
+.main-container {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  grid-template-rows: auto auto auto;
+}
+
+/* Left Top Container */
+
+#left-top-container {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #14213d;
+  color: #ffffff;
+}
+
+#Contact-details ul {
+  list-style: square;
+}
+
+/* Right Top Container */
+
+#right-top-container {
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  padding-left: 7rem;
+  color: #14213d;
+  border-bottom: 3px solid #14213d;
+}
+
+#first-name {
+  font-size: clamp(2rem, 6vw, 2.5rem);
+}
+
+#right-top-container h1 {
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.3em;
+}
+
+#right-top-container h4 {
+  margin: 0;
+}
+
+/* Left Container */
+
+#left-container {
+  padding-top: 1rem;
+  border-bottom: 3px solid #14213d;
+}
+
+#pp {
+  width: 15rem;
+  margin-left: 5rem;
+  margin-bottom: 1rem;
+}
+
+/* Right Container */
+
+#right-container {
+  padding-left: 7rem;
+  padding-right: 7rem;
+  border-bottom: 3px solid #14213d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#right-container h4 {
+  text-align: center;
+  margin: 0;
+}
+
+#right-container p {
+  font-size: larger;
+}
+
+/******** Left Bottom Container */
+
+#left-bottom-container {
+  padding: 0 1rem;
+  padding-bottom: 3rem;
+}
+
+/* Education Part */
+
+h4.Education {
+  margin-left: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.date {
+  opacity: 80%;
+  font-weight: 400;
+  margin: 0.5rem 1rem;
+}
+
+.degree {
+  font-weight: 600;
+  margin: 0.5rem 1rem;
+}
+
+.institute {
+  font-weight: 400;
+  margin: 0.5rem 1rem;
+}
+
+#left-bottom-container hr {
+  margin: 1rem;
+}
+
+/* Skills Part */
+
+h4.Skill,
+h4.Interest {
+  margin-left: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+ul.Skill,
+ul.Interest {
+  padding: 0;
+  list-style: none;
+  margin: 0 1rem;
+}
+
+#left-bottom-container li {
+  padding: 0.2rem 0;
+}
+
+/********* Right Bottom Container */
+
+#right-bottom-container {
+  background-color: #14213d;
+  padding-left: 1rem;
+}
+
+h4.work-experience {
+  margin-left: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
