@@ -18,6 +18,12 @@ body {
   overflow: hidden;
 }
 
+@media (max-width: 700px) {
+  .header {
+    height: 70vh;
+  }
+}
+
 /**************** NAV ITEMS */
 
 .nav {
@@ -25,6 +31,15 @@ body {
   justify-content: space-between;
   align-items: center;
   max-height: 7rem;
+}
+
+.nav-item {
+  color: white;
+}
+
+.nav-item:hover {
+  transform: scale(1.01);
+  background-color: #273b7a;
 }
 
 .logo {
@@ -91,7 +106,7 @@ body {
 
 /* button */
 
-.btn {
+.header-content .btn {
   background-color: #273b7a;
   color: white;
   margin: 0.5rem;
@@ -101,14 +116,69 @@ body {
   background-color: #b54324;
 }
 
-/************** BODY SECTION */
-
 .carousel-div {
   padding: 0 10rem;
   background-color: #002225;
-  height: max-content;
+  background-color: #00323f;
 }
 
-.carousel-div h2 {
-  font-family: "Anta", sans-serif;
+@media (max-width: 768px) {
+  /* .carousel-caption {
+    /* display: none; Hide the carousel text on smaller screens 
+  } */
+
+  .carousel-item img {
+    object-fit: cover; /* Adjust the image size to cover the area */
+  }
 }
+
+@media (max-width: 1024px) {
+  .carousel-div {
+    padding: 0;
+  }
+}
+
+/********** MEMBERSHIP SECTION  */
+
+.membership-section {
+  padding: 2rem 0;
+  background-color: #b54324;
+}
+
+.card {
+  margin: 0.5rem 1rem;
+  padding: 0.5rem;
+}
+
+.card_text {
+  padding: auto;
+  margin: auto;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  background-color: #00323f;
+  color: white;
+  cursor: pointer;
+}
+
+
+
+/********* FOOTER  */
+
+.footer {
+  background-color: #002225;
+  color: white;
+}
+
+.foot {
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-btn{
+  margin: 1rem auto;
+  padding: 0.5rem;
+}
+
