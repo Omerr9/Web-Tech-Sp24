@@ -49,6 +49,7 @@ header {
 
 .nav-middle {
   align-self: center;
+  text-align: center;
 }
 
 .main-logo {
@@ -109,4 +110,74 @@ header {
     font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
+    align-items: center;
+    width: 100%;
+}
+
+/* Below Header */
+
+.below-header{
+    margin: 1rem 0;
+    padding: 1rem 0;
+    display: flex;
+    gap: 0.8rem;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.below-header-item-icon img{
+    width: 3rem;
+}
+
+.below-header-item {
+    width: 25%;
+    display: flex;
+    gap: 1rem;
+    font-size: small;
+    font-weight: 400;
+    border-right: 1px solid black;
+    box-sizing: border-box;
+}
+
+.bhic-last{
+    border-width: 0;
+}
+
+/* Main Page */
+
+.main-page{
+    border-top: 1px solid black;
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+}
+
+.main-page-left {
+    border-right: 1px solid black;
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
+.main-page-right {
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
+.news-style-1 {
+    display: flex;
+    gap: 2rem;
+}
+
+.news-style-1-content h2{
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: rgb(107 114 128);
+    margin-bottom: 0.5rem;
+}
+
+.ns1cp1 {
+    margin-bottom: 1rem;
+}
+
+.news-style-1-img {
+    border-radius: 20px;
 }
