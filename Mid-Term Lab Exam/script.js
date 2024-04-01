@@ -5,7 +5,7 @@ images.forEach(image => {
     // Add 'mouseover' event listener
     image.addEventListener('mouseover', () => {
       // Add the 'hovered' class on mouseover
-      logo.innerHTML = "Photo Hovered";
+      logo.innerHTML = image.src;
     });
 
     // Add 'mouseout' event listener
