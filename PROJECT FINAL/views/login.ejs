@@ -20,7 +20,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="JS/contact_us.js"></script>
 
-    <title>Sign Up</title>
+    <title>Contact Us</title>
 </head>
 
 <body>
@@ -47,42 +47,30 @@
                                     d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                             </svg>
                         </a></li>
-                    <li class="nav-item text-center"><a href="">Home</a></li>
-                    <li class="nav-item text-center"><a href="">Services</a></li>
+                    <li class="nav-item text-center"><a href="/">Home</a></li>
+                    <li class="nav-item text-center"><a href="/services">Services</a></li>
                     <li class="nav-item text-center"><a href="">About Us</a></li>
-                    <li class="nav-item text-center"><a href="">Contact</a></li>
+                    <li class="nav-item text-center"><a href="/contact-us">Contact</a></li>
                 </ul>
             </div>
         </div>
     </header>
+
     <div class="body">
         <div class="container">
-            <h1 class="heading">CREATE AN ACCOUNT</h1>
-            <form action="/sign-up" class="form-grid" id="signupForm" method="post">
-                <div class="form-group">
-                    <label for="firstName">First Name:</label>
-                    <input name="firstName" type="text" class="form-control" id="firstName" placeholder="First Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name:</label>
-                    <input name="lastName" type="text" class="form-control" id="lastName" placeholder="Last Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number:</label>
-                    <input name="phone_no" type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
-                </div>
+            <h1 class="heading">LOGIN</h1>
+            <form class="form-grid" id="signupForm">
                 <div class="form-group">
                     <label for="username">Username:</label>
-                    <input name="username" type="text" class="form-control" id="username" placeholder="Username" required>
+                    <input type="text" class="form-control" id="username" placeholder="Username" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+                    <input type="password" class="form-control" id="password" placeholder="Password" required>
                 </div>
-                <button type="submit" class="my-2 form-button sign-up-btn">Sign Up</button>
-                <a href="/login" class="a-link">Already a Member?</a>
-            </form>
-                        
+                <button type="submit" class="my-2 form-button sign-up-btn">Login</button>
+                <a href="/sign-up" class="a-link">Not a member?</a>
+            </form>            
         </div>
     </div>
 </body>
