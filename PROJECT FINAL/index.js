@@ -3,6 +3,7 @@ const session = require("express-session");
 const express = require("express");
 const mongoose = require("mongoose");
 const server = express();
+const auth = require("./Middleware/auth");
 
 server.use(cookieParser());
 server.use(session({ secret: "PROTECTED!" }));
@@ -36,9 +37,13 @@ server.get("/services", (req, res) => {
     res.render("services");
 });
 
-server.get("about-us", (req, res) => {
-  res.render("/about-us");
-})
+server.get("/about-us", (req, res) => {
+  res.render("about-us");
+});
+
+server.get("/dashboard", auth, (req, res, next) => {
+  res.send(`Welcome ${res.locals.userName}`);
+});
 
 mongoose.connect("mongodb://localhost:27017/Project").then((data) => {
   console.log("DB Connected");
