@@ -1,14 +1,17 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const router = express.Router();
-let User = require("../../Models/user");
-const auth = require("../../Middleware/auth");
+const jwt = require("jsonwebtoken");
+const User = require("../../Models/user");
 
+const secret = "TOP JWT SECRET"; // Define the secret directly in the code
+
+// Sign-Up Route
 router.post("/sign-up", async (req, res) => {
   try {
     let user = await User.findOne({ username: req.body.username });
     if (user) {
-      return res.redirect("/sign-up");
+      return res.status(400).send("Username already taken.");
     }
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
@@ -17,24 +20,38 @@ router.post("/sign-up", async (req, res) => {
       password: hashedPassword,
     });
     await user.save();
-    res.redirect("/login");
+    res.status(200).send("User registered successfully.");
   } catch (error) {
-    res.redirect("/sign-up");
+    res.status(500).send("Something went wrong at server.");
   }
 });
 
+// Login Route
 router.post("/login", async (req, res) => {
-  let user = await User.findOne({ username: req.body.username });
-  console.log(req.body);
-  if (!user) {
-    return res.redirect("/sign-up");
+  try {
+    let user = await User.findOne({ username: req.body.username });
+    if (!user) {
+      return res.status(400).send("Invalid username or password.");
     }
     const validPassword = await bcrypt.compare(req.body.password, user.password);
-  if (!validPassword) {
-    return res.redirect("/login");
+    if (!validPassword) {
+      return res.status(400).send("Invalid username or password.");
+    }
+    const token = jwt.sign(
+      {
+        _id: user._id,
+        username: user.username,
+        firstName: user.firstName,
+        lastName: user.lastName,
+      },
+      secret,
+      { expiresIn: "300s" }
+    );
+    res.cookie('token', token, { httpOnly: true });
+    res.redirect("/dashboard");
+  } catch (error) {
+    res.status(500).send("Something went wrong at server.");
   }
-  req.session.user = user;
-  return res.redirect("/dashboard");
 });
 
 module.exports = router;
