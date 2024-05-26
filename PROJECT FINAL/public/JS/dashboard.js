@@ -13,7 +13,7 @@ function fetchWorkouts(page = 1) {
           container.append(`
             <div class="col-12 col-md-4">
               <div class="card mb-3">
-                <div class="card-body">
+                <div class="card-body" wid="${workout._id}">
                   <h5 class="card-title">${workout.workoutName}</h5>
                   <p class="card-text">${workout.exercises}</p>
                   <p class="card-text">${workout.duration} minutes</p>
@@ -23,6 +23,7 @@ function fetchWorkouts(page = 1) {
                   <p class="card-text"><small class="text-muted">Uploaded By:: ${
                     workout.username
                   }</small></p>
+                  <a class="btn btn-primary" href="/workout/delete/${workout._id}">Delete Workout</a>
                 </div>
               </div>
             </div>
@@ -66,7 +67,6 @@ function fetchWorkouts(page = 1) {
     },
   });
 }
-
 // Fetch the first page of workouts on page load
 $(document).ready(function () {
   fetchWorkouts();
@@ -80,3 +80,4 @@ $(document).ready(function () {
     }
   });
 });
+

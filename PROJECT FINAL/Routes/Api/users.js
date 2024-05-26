@@ -45,7 +45,7 @@ router.post("/login", async (req, res) => {
         lastName: user.lastName,
       },
       secret,
-      { expiresIn: "300s" }
+      { expiresIn: "900s" }
     );
     res.cookie('token', token, { httpOnly: true });
     res.redirect("/dashboard");

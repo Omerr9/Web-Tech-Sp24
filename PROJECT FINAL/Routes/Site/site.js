@@ -18,7 +18,8 @@ router.get("/login", alreadyLoggedIn, (req, res) => {
 });
 
 router.get("/contact-us", (req, res) => {
-  res.render("contact-us");
+  const { message } = req.query;
+  res.render("contact-us", { message });
 });
 
 router.get("/services", (req, res) => {

@@ -48,14 +48,14 @@ router.get("/workouts/:page?", auth, async (req, res) => {
   });
 });
 
-router.get("/workouts/:id/delete", async (req, res) => {
+router.get("/workout/delete/:id", async (req, res) => {
   const workoutId = req.params.id;
   const workout = await Workout.findByIdAndDelete(workoutId);
   console.log(workout);
   res.redirect("/dashboard");
 });
 
-router.get("/workouts/:id/update", auth, async (req, res) => {
+router.put("/workout/update/:id", auth, async (req, res) => {
   try {
     const workoutId = req.params.id;
     const { workoutName, exercises, duration, date } = req.body;
@@ -78,9 +78,7 @@ router.get("/workouts/:id/update", auth, async (req, res) => {
     console.log(updatedWorkout);
     return res.redirect("/dashboard");
   } catch (error) {
-    return res
-      .status(500)
-      .json({ message: "Error updating workout: " + error.message });
+    return res.redirect("/dashboard");
   }
 });
 
