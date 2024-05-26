@@ -18,7 +18,7 @@
         rel="stylesheet">
     <!-- JAVASCRIPT -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="JS/contact_us.js"></script>
+    <script src="JS/navbar.js"></script>
 
     <title>Sign Up</title>
 </head>
@@ -27,14 +27,15 @@
     <header>
         <div class="navbar">
             <div class="logo">
-                <img class="logo-img" src="./Images/weight-bar.png" alt="Logo">
+                <a href="/"><img class="logo-img" src="./Images/weight-bar.png" alt="Logo"></a>
             </div>
             <div class="nav">
                 <ul class="nav-items">
                     <li class="btn nav-item"><a href="/">Home</a></li>
                     <li class="btn nav-item"><a href="/services">Services</a></li>
-                    <li class="btn nav-item"><a href="">About Us</a></li>
                     <li class="btn nav-item"><a href="/contact-us">Contact</a></li>
+                    <li><a href="/login"><button class="btn btn-primary nav-item">Sign In</button></a></li>
+                    <li><a href="/sign-up"><button class="btn bg-light nav-item">Register</button></a></li>
                     <li class="nav-icon" onclick=showSidebar()><a href="#"><svg class="menu-svg"
                                 xmlns="http://www.w3.org/2000/svg" height="3rem" viewBox="0 -960 960 960" width="3rem">
                                 <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
@@ -47,10 +48,9 @@
                                     d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
                             </svg>
                         </a></li>
-                    <li class="nav-item text-center"><a href="">Home</a></li>
-                    <li class="nav-item text-center"><a href="">Services</a></li>
-                    <li class="nav-item text-center"><a href="">About Us</a></li>
-                    <li class="nav-item text-center"><a href="">Contact</a></li>
+                    <li class="nav-item text-center"><a href="/">Home</a></li>
+                    <li class="nav-item text-center"><a href="/services">Services</a></li>
+                    <li class="nav-item text-center"><a href="/contact-is">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -58,31 +58,41 @@
     <div class="body">
         <div class="container">
             <h1 class="heading">CREATE AN ACCOUNT</h1>
-            <form action="/sign-up" class="form-grid" id="signupForm" method="post">
-                <div class="form-group">
-                    <label for="firstName">First Name:</label>
-                    <input name="firstName" type="text" class="form-control" id="firstName" placeholder="First Name" required>
+            <% if (message) { %>
+                <div class="alert alert-danger m-0">
+                    <%= message %>
                 </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name:</label>
-                    <input name="lastName" type="text" class="form-control" id="lastName" placeholder="Last Name" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number:</label>
-                    <input name="phone_no" type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
-                </div>
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input name="username" type="text" class="form-control" id="username" placeholder="Username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
-                </div>
-                <button type="submit" class="my-2 form-button sign-up-btn">Sign Up</button>
-                <a href="/login" class="a-link">Already a Member?</a>
-            </form>
-                        
+                <% } %>
+                    <form action="/sign-up" class="form-grid" id="signupForm" method="post">
+                        <div class="form-group">
+                            <label for="firstName">First Name:</label>
+                            <input name="firstName" type="text" class="form-control" id="firstName"
+                                placeholder="First Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name:</label>
+                            <input name="lastName" type="text" class="form-control" id="lastName"
+                                placeholder="Last Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number:</label>
+                            <input name="phone_no" type="tel" class="form-control" id="phone" placeholder="Phone Number"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Username:</label>
+                            <input name="username" type="text" class="form-control" id="username" placeholder="Username"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input name="password" type="password" class="form-control" id="password"
+                                placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="my-2 form-button sign-up-btn">Sign Up</button>
+                        <a href="/login" class="a-link">Already a Member?</a>
+                    </form>
+
         </div>
     </div>
 </body>

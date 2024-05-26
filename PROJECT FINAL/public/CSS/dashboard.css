@@ -1,0 +1,28 @@
+.title{
+    color: white;
+    font-size: larger;
+    text-transform: uppercase;
+}
+
+.logout{
+    background-color: #b54324;
+    border: none;
+    color: white;
+}
+
+.logout:hover{
+    background-color: #121149;
+    color: white;
+}
+
+/* BODY */
+
+.addworkout{
+    background-color: #121149;
+    border: none;
+}
+
+.addworkout:hover{
+    background-color: #b54324;
+    border: none;
+}

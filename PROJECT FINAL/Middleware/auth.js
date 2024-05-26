@@ -6,7 +6,7 @@ async function apiauth(req, res, next) {
   const token = req.cookies.token;
 
   if (!token) {
-    return res.redirect("/login");
+    return res.redirect("/login",{value: "hello"});
   }
 
   try {

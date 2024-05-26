@@ -106,3 +106,15 @@
   .sidebar a:hover {
     color: #f0f0f0;
   }
+
+  .btn{
+    border: none;
+  }
+  
+  .btn:hover{
+    border:none;
+  }
+
+  .bg-light:hover {
+    color: black;
+  }

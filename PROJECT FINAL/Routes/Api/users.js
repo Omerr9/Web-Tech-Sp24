@@ -11,8 +11,8 @@ router.post("/sign-up", async (req, res) => {
   try {
     let user = await User.findOne({ username: req.body.username });
     if (user) {
-      return res.status(400).send("Username already taken.");
-    }
+      return res.redirect("/sign-up?message=Username%20Already%20Taken.");
+  }  
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     user = new User({
@@ -20,7 +20,7 @@ router.post("/sign-up", async (req, res) => {
       password: hashedPassword,
     });
     await user.save();
-    res.status(200).send("User registered successfully.");
+    res.redirect("/login?message=Signed%20Up%20Successfully");
   } catch (error) {
     res.status(500).send("Something went wrong at server.");
   }
@@ -31,11 +31,11 @@ router.post("/login", async (req, res) => {
   try {
     let user = await User.findOne({ username: req.body.username });
     if (!user) {
-      return res.status(400).send("Invalid username or password.");
+      return res.redirect("sign-up?message=Username%20Doesnt%20Exist.%20Create%20An%20Account");
     }
     const validPassword = await bcrypt.compare(req.body.password, user.password);
     if (!validPassword) {
-      return res.status(400).send("Invalid username or password.");
+      return res.redirect("/login?message=Incorrect%20Password");
     }
     const token = jwt.sign(
       {
@@ -52,6 +52,11 @@ router.post("/login", async (req, res) => {
   } catch (error) {
     res.status(500).send("Something went wrong at server.");
   }
+});
+
+router.post("/logout", (req, res) => {
+  res.cookie('token', '', { expiresIn: new Date(0), httpOnly: true });
+  res.redirect("/login?message=Logged%20Out%20Successfully");
 });
 
 module.exports = router;

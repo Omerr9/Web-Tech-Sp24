@@ -26,13 +26,12 @@
         <div class="header" id="top">
             <div class="navbar">
                 <div class="logo">
-                    <img class="logo-img" src="./Images/weight-bar.png" alt="Logo">
-                </div>
+                    <a href="/"><img class="logo-img" src="./Images/weight-bar.png" alt="Logo"></a> 
+                 </div>
                 <div class="nav">
                     <ul class="nav-items">
                         <li class="btn nav-item"><a href="">Home</a></li>
                         <li class="btn nav-item"><a href="/services">Services</a></li>
-                        <li class="btn nav-item"><a href="">About Us</a></li>
                         <li class="btn nav-item"><a href="/contact-us">Contact</a></li>
                         <li class="nav-icon" onclick=showSidebar()><a href="#"><svg class="menu-svg"
                                     xmlns="http://www.w3.org/2000/svg" height="3rem" viewBox="0 -960 960 960"
@@ -49,7 +48,6 @@
                             </a></li>
                         <li class="nav-item text-center"><a href="">Home</a></li>
                         <li class="nav-item text-center"><a href="/services">Services</a></li>
-                        <li class="nav-item text-center"><a href="">About Us</a></li>
                         <li class="nav-item text-center"><a href="/contact">Contact</a></li>
                     </ul>
                 </div>
@@ -135,16 +133,7 @@
             </div>
         </div>
     </section>
-    <script>
-        function showSidebar() {
-            const sidebar = document.querySelector('.sidebar')
-            sidebar.style.display = 'flex'
-        }
-        function closeSidebar() {
-            const sidebar = document.querySelector('.sidebar')
-            sidebar.style.display = 'none'
-        }
-    </script>
+    <script src="JS/navbar.js"></script>
 </body>
 
 </html>
