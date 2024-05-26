@@ -5,7 +5,8 @@ const workoutSchema = new mongoose.Schema({
     username: String,
     workoutName: String,
     exercises: String,
-    duration: String
+    duration: String,
+    date: String
 });
 
 const workoutData = mongoose.model('Workouts', workoutSchema);

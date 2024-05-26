@@ -27,10 +27,11 @@
         <nav>
             <div class="navbar">
                 <div class="logo">
-                    <a href="/"><img class="logo-img" src="./Images/weight-bar.png" alt="Logo"></a>
+                    <img class="logo-img" src="./Images/weight-bar.png" alt="Logo">
                 </div>
                 <div class="title">
-                    WELCOME <%= firstName%> <%=lastName %>
+                    WELCOME <%= firstName%>
+                        <%=lastName %>
                 </div>
                 <form action="/logout" method="POST">
                     <button type="submit" class="btn btn-light logout">Logout</button>
@@ -62,29 +63,23 @@
                                 <input type="number" class="form-control" id="workoutDuration" name="duration"
                                     placeholder="Enter duration" required>
                             </div>
+                            <div class="col-md-2 mb-3">
+                                <label for="workoutDate">Date</label>
+                                <input type="date" class="form-control" id="workoutDate" name="date"
+                                    placeholder="Enter date" required>
+                            </div>
                         </div>
                         <button class="btn btn-primary addworkout" type="submit">Add Workout</button>
                     </form>
 
-                    <table class="table table-striped table-bordered mt-4" id="workoutTable">
-                        <thead>
-                            <tr>
-                                <th scope="col">Username</th>
-                                <th scope="col">Workout</th>
-                                <th scope="col">Exercises</th>
-                                <th scope="col">Duration (mins)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Workout entries will be dynamically added here -->
-                        </tbody>
-                    </table>
+                    <div id="workout-container" class="row my-3"></div>
+                    <div class="text-center mt-4">
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </div>
-    <script src="JS/dashboard.js"></script>
+        </div>
+        <script src="JS/dashboard.js"></script>
 
 </body>
 
