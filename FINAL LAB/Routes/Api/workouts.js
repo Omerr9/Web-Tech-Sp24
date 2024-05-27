@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Workout = require("../../Models/workout");
 const auth = require("../../Middleware/auth");
+const storeSearchInSession = require("../../Middleware/storeSearchInSession");
 
 router.post("/workouts", auth, async (req, res) => {
   try {
@@ -25,17 +26,23 @@ router.post("/workouts", auth, async (req, res) => {
   }
 });
 
-router.get("/workouts/:page?", auth, async (req, res) => {
-  let page = Number(req.params.page) ? Number(req.params.page) : 1;
+router.get("/workouts/:page?", auth, storeSearchInSession, async (req, res) => {
+  let page = Number(req.params.page) || 1;
   let pageSize = 3;
   const username = req.user.username;
+  const searchQuery = req.query.query || "";
 
-  let workouts = await Workout.find({ username })
+  let query = { username };
+  if (searchQuery) {
+    query.workoutName = { $regex: searchQuery, $options: "i" };
+  }
+
+  let workouts = await Workout.find(query)
     .sort({ date: -1 })
     .skip(pageSize * (page - 1))
     .limit(pageSize);
 
-  let total = await Workout.countDocuments({ username });
+  let total = await Workout.countDocuments(query);
   let totalPages = Math.ceil(total / pageSize);
 
   res.json({
@@ -54,6 +61,13 @@ router.get("/workout/delete/:id", async (req, res) => {
   console.log(workout);
   res.redirect("/dashboard");
 });
+
+router.get('/searches', auth, (req, res) => {
+  const searches = req.session.searches || [];
+  console.log(searches);
+  res.json({ searches });
+});
+
 
 router.put("/workout/update/:id", auth, async (req, res) => {
   try {

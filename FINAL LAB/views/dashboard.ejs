@@ -41,6 +41,7 @@
     </div>
 
     <div class="body">
+
         <div class="container mt-5">
             <h1 class="text-center">Workout Tracker</h1>
             <div class="body mt-4">
@@ -53,7 +54,7 @@
                                 <input type="text" class="form-control" name="workoutName" id="workoutName"
                                     placeholder="Enter body parts trained" required>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <div class="col-md4 mb-3">
                                 <label for="workoutType">Exercises</label>
                                 <input type="text" name="exercises" class="form-control" id="workoutType"
                                     placeholder="Enter exercises" required>
@@ -72,14 +73,33 @@
                         <button class="btn btn-primary addworkout" type="submit">Add Workout</button>
                     </form>
 
-                    <div id="workout-container" class="row my-3"></div>
-                    <div class="text-center mt-4">
+                    <!-- Search Bar -->
+                    <div class="search-bar mt-4">
+                        <div class="input-group">
+                            <input type="text" id="search-query" class="form-control" placeholder="Search workouts with Workout name..." onfocus="fetchStoredSearches()">
+                            <div class="input-group-append">
+                              <button class="btn btn-primary" type="button" onclick="handleSearch()">Search</button>
+                            </div>
+                            <div class="dropdown">
+                              <ul id="search-history-dropdown" class="dropdown-menu" style="display: none; position: absolute; z-index: 1000; width: 100%;"></ul>
+                            </div>
+                          </div>
+                          
+
+
                     </div>
+
+                    <!-- Workout Container -->
+                    <div id="workout-container" class="row my-3"></div>
+
+                    <!-- Search History Container -->
+                    <div id="search-history-container" class="mt-4"></div>
                 </div>
             </div>
-
         </div>
-        <script src="JS/dashboard.js"></script>
+
+    </div>
+    <script src="JS/dashboard.js"></script>
 
 </body>
 

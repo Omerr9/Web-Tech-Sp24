@@ -8,6 +8,18 @@ require("dotenv").config();
 server.use(cookieParser());
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+const session = require("express-session");
+server.use(
+  session({
+    secret: "yourSecretKey", // Replace with a secure key
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      secure: false,
+      maxAge: 1000*60*60
+     }, // Set to true if using HTTPS
+  })
+);
 
 // VIEW ENGINE
 server.set("view engine", "ejs");

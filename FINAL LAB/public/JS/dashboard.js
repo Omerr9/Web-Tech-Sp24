@@ -1,10 +1,10 @@
-function fetchWorkouts(page = 1) {
+function fetchWorkouts(page = 1, searchQuery = "") {
   $.ajax({
-    url: `/workouts/${page}`,
+    url: `/workouts/${page}?query=${encodeURIComponent(searchQuery)}`,
     method: "GET",
     success: function (data) {
       const container = $("#workout-container");
-      container.empty(); // Clear the container
+      container.empty();
 
       if (data.workouts.length === 0) {
         container.append("<p>No workouts found.</p>");
@@ -20,10 +20,12 @@ function fetchWorkouts(page = 1) {
                   <p class="card-text">${new Date(
                     workout.date
                   ).toLocaleDateString()}</p>
-                  <p class="card-text"><small class="text-muted">Uploaded By:: ${
+                  <p class="card-text"><small class="text-muted">Uploaded By: ${
                     workout.username
                   }</small></p>
-                  <a class="btn btn-primary" href="/workout/delete/${workout._id}">Delete Workout</a>
+                  <a class="btn btn-primary" href="/workout/delete/${
+                    workout._id
+                  }">Delete Workout</a>
                 </div>
               </div>
             </div>
@@ -31,34 +33,33 @@ function fetchWorkouts(page = 1) {
         });
       }
 
-      // Pagination controls
       const pagination = `
-      <nav aria-label="Page navigation">
-      <ul class="pagination">
-        <li class="page-item ${data.page === 1 ? "disabled" : ""}">
-          <a class="page-link" href="#" onclick="fetchWorkouts(${
-            data.page - 1
-          })">Previous</a>
-        </li>
-        ${Array.from(
-          { length: data.totalPages },
-          (_, i) => `
-          <li class="page-item ${i + 1 === data.page ? "active" : ""}">
-            <a class="page-link" href="#" onclick="fetchWorkouts(${i + 1})">${
-            i + 1
-          }</a>
-          </li>
-        `
-        ).join("")}
-        <li class="page-item ${
-          data.page === data.totalPages ? "disabled" : ""
-        }">
-          <a class="page-link" href="#" onclick="fetchWorkouts(${
-            data.page + 1
-          })">Next</a>
-        </li>
-      </ul>
-    </nav>
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <li class="page-item ${data.page === 1 ? "disabled" : ""}">
+              <a class="page-link" href="#" onclick="fetchWorkouts(${
+                data.page - 1
+              }, '${searchQuery}')">Previous</a>
+            </li>
+            ${Array.from(
+              { length: data.totalPages },
+              (_, i) => `
+              <li class="page-item ${i + 1 === data.page ? "active" : ""}">
+                <a class="page-link" href="#" onclick="fetchWorkouts(${
+                  i + 1
+                }, '${searchQuery}')">${i + 1}</a>
+              </li>
+            `
+            ).join("")}
+            <li class="page-item ${
+              data.page === data.totalPages ? "disabled" : ""
+            }">
+              <a class="page-link" href="#" onclick="fetchWorkouts(${
+                data.page + 1
+              }, '${searchQuery}')">Next</a>
+            </li>
+          </ul>
+        </nav>
       `;
       container.append(pagination);
     },
@@ -67,17 +68,52 @@ function fetchWorkouts(page = 1) {
     },
   });
 }
-// Fetch the first page of workouts on page load
-$(document).ready(function () {
-  fetchWorkouts();
 
-  // Duration Check
-  $("#workoutForm").submit(function (event) {
-    var durationInput = $("#workoutDuration").val();
-    if (durationInput <= 0) {
-      alert("Please enter a duration greater than 0.");
-      event.preventDefault(); // Prevent form submission
+function handleSearch(searchQuery = null) {
+  const query = searchQuery || $("#search-query").val();
+  fetchWorkouts(1, query);
+}
+
+function fetchStoredSearches() {
+  $.ajax({
+    url: "/searches",
+    method: "GET",
+    success: function (data) {
+      const dropdown = $("#search-history-dropdown");
+      dropdown.empty();
+
+      if (data.searches.length === 0) {
+        dropdown.append(
+          "<li class='dropdown-item'>No search history found.</li>"
+        );
+      } else {
+        data.searches.forEach((search) => {
+          dropdown.append(
+            `<li class='dropdown-item'><a href="#" onclick="handleSearch('${search}')">${search}</a></li>`
+          );
+        });
+      }
+      dropdown.show();
+    },
+    error: function (error) {
+      console.error("Error fetching search history:", error);
+    },
+  });
+}
+
+$(document).ready(function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchQuery = urlParams.get("query") || "";
+  $("#search-query").val(searchQuery);
+  fetchWorkouts(1, searchQuery);
+
+  $("#search-btn").click(function () {
+    handleSearch();
+  });
+
+  $(document).click(function (event) {
+    if (!$(event.target).closest(".input-group").length) {
+      $("#search-history-dropdown").hide();
     }
   });
 });
-
